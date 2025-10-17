@@ -1,0 +1,73 @@
+# Develop a C++ Program to Find Factorial of a Given Number Using Recurssion
+PROGRAM:
+#include<iostream>
+long long factorial(int n){
+if(n==0||n==1)
+{
+return 1;
+}else{
+return n*factorial(n-1);
+}
+}
+int main()
+{
+int num;
+std::cout<<"enter a number: ";
+std::cin>>num;
+if(num<0){
+std::cout<<"negative number"<<std::endl;
+}else{
+long long result =factorial(num);
+std::cout<<"factorial of "<<num<<"is:"<<result<<std::endl;
+}
+return 0;
+}
+OUTPUT:
+enter a number: 6
+factorial of 6 is: 720
+ 
+
+# Develop a C++ Program to Demonstrate Call by Value and Call by Reference
+PROGRAM:
+USING call by value
+#include <iostream>
+using namespace std;
+void swap(int x, int y) {
+ int temp = x;
+ x = y;
+ y = temp;
+}
+int main() {
+ int a = 50;
+ int b = 90;
+ cout << "Before swap: a = " << a << " b = " << b << endl;
+ swap(a, b);
+ cout << "After swap: a = " << a << " b = " << b << endl;
+ return 0;
+} 
+Output:
+Before swap: a = 50 b = 90
+After swap: a = 50 b = 90
+
+USING Call by reference
+#include <iostream>
+using namespace std;
+void swap(int *a, int *b) {
+ int temp = *a;
+ *a = *b;
+ *b = temp;
+}
+int main() {
+ int x = 3;
+ int y = 18;
+ cout << "Before swap: x = " << x << " , y = " << y << endl;
+ swap(&x, &y);
+ cout << "After swap: x = " << x << ", y = " << y << endl;
+ return 0;
+}
+Output:
+Before swap: x = 3 , y = 18
+After swap: x =18, y = 3
+
+
+# 
