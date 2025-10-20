@@ -1,0 +1,213 @@
+# Create a C++ program that demonstrates the use of constructors and destructors in a class.
+PROGRAM:
+  #include <iostream>
+using namespace std;
+class Student {
+private:
+    string name;
+    int age;
+public:
+    Student(string n, int a) {
+        name = n;
+        age = a;
+        cout << "Constructor called for " << name << endl;
+    }
+    ~Student() {
+        cout << "Destructor called for " << name << endl;
+    }
+    void display() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+int main() {
+    string n;
+    int a;
+    cout << "Enter student name: ";
+    getline(cin, n); 
+    cout << "Enter student age: ";
+    cin >> a;
+    Student s1(n, a);
+    s1.display();
+    cout << "End of program.\n";
+    return 0; 
+}
+OUTPUT:
+
+Enter student name: srinadh
+Enter student age: 19
+Constructor called for srinadh
+Name: dinesh, Age: 18
+End of program.
+Destructor called for srinadh
+ 
+
+# Develop a C++ program that illustrates constructor overloading.
+PROGRAM:
+#include <iostream>
+using namespace std;
+ 
+class Rectangle {
+private:
+    
+int length;
+    int width;
+ 
+public:
+    Rectangle() {
+        length = 0;
+        width = 0;
+        cout << "Default constructor called!" << endl;
+    }
+ 
+    Rectangle(int side) {
+        length = side;
+        width = side;
+        cout << "Square constructor called!" << endl;
+    }
+ 
+    Rectangle(int l, int w) {
+        length = l;
+        width = w;
+        cout << "Rectangle constructor called!" << endl;
+    }
+ 
+    void display() {
+        cout << "Length: " << length << ", Width: " << width << endl;
+    }
+};
+ 
+int main() {
+    int choice;
+    cout << "Choose how to create the rectangle:\n";
+    cout << "1. Default (0x0)\n";
+    cout << "2. Square (one side)\n";
+    cout << "3. Rectangle (length & width)\n";
+    cout << "Enter choice: ";
+    cin >> choice;
+ 
+    if (choice == 1) {
+        Rectangle r1;
+        r1.display();
+    }
+    else if (choice == 2) {
+        int side;
+        cout << "Enter side length: ";
+        cin >> side;
+        Rectangle r2(side);
+        r2.display();
+    }
+    else if (choice == 3) {
+        int l, w;
+        cout << "Enter length: ";
+        cin >> l;
+        cout << "Enter width: ";
+        cin >> w;
+        Rectangle r3(l, w);
+        r3.display();
+    }
+    else {
+        cout << "Invalid choice!\n";
+    }
+ 
+    return 0;
+}
+Output 1 :
+Choose how to create the rectangle:
+1. Default (0x0)
+2. Square (one side)
+3. Rectangle (length & width)
+Enter choice: 1
+Default constructor called!
+Length: 0, Width: 0
+ 
+Output 2 :
+Choose how to create the rectangle:
+1. Default (0x0)
+2. Square (one side)
+3. Rectangle (length & width)
+Enter choice: 2
+Enter side length: 40
+Square constructor called!
+Length: 40, Width: 40
+ 
+Output 3:
+Choose how to create the rectangle:
+1. Default (0x0)
+2. Square (one side)
+3. Rectangle (length & width)
+Enter choice: 3
+Enter length: 6
+Enter width: 3
+Rectangle constructor called!
+Length: 6, Width: 3
+
+
+# Write a C++ program that illustrates the use of a copy constructor.
+PROGRAM:
+#include <iostream>
+using namespace std;
+ 
+
+class Rectangle {
+private:
+    
+int length;
+    int width;
+ 
+public:
+    Rectangle(int l, int w) {
+        length = l;
+        width = w;
+    }
+ 
+    Rectangle(const Rectangle &r) {
+        length = r.length;
+        width = r.width;
+        cout << "Copy constructor called!" << endl;
+    }
+ 
+    void setLength(int l) {
+        length = l;
+    }
+ 
+    void display() {
+        cout << "Length: " << length << ", Width: " << width << endl;
+    }
+};
+ 
+int main() {
+    int l, w;
+    cout << "Enter length and width: ";
+    cin >> l >> w;
+ Rectangle rect1(l, w);
+    cout << "\nOriginal Rectangle (rect1):" << endl;
+    rect1.display();
+ Rectangle rect2 = rect1;
+    cout << "\nCopied Rectangle (rect2):" << endl;
+    rect2.display();
+ 
+    rect1.setLength(l + 10);
+    cout << "\nAfter changing rect1's length:" << endl;
+    cout << "rect1: ";
+    rect1.display();
+    cout << "rect2: ";
+    rect2.display();
+ 
+    return 0;
+}
+OUTPUT:
+Enter length and width: 4
+6
+
+ Original Rectangle (rect1):
+Length: 4, Width: 6
+Copy constructor called!
+
+Copied Rectangle (rect2):
+Length: 4, Width: 6
+ 
+After changing rect1's length:
+rect1: Length: 14, Width: 6
+rect2: Length: 4, Width: 6
+
+
