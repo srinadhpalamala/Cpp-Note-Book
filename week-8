@@ -1,0 +1,78 @@
+# Develop a C++ program that demonstrates how to use pointers to access and manipulate objects of a class.
+PROGRAM:
+#include<iostream> 
+using namespace std;                                                                                 
+class student{ 
+ private: 
+  string name; 
+  int age; 
+ public: 
+ void setdata(string n,int a){ 
+  name=n; 
+  age=a; 
+ }  
+ void display(){ 
+  cout<<"Name:"<<name<<",Age:"<<age<<endl; 
+ } 
+}; 
+int main(){ 
+ student s1; 
+ s1.setdata("Alice",20); 
+ s1.display(); 
+ student*ptr; 
+ ptr=&s1; 
+ ptr->display(); 
+ student *ptr2=new student; 
+ ptr2->setdata("Bob",22); 
+ ptr2->display(); 
+ delete ptr2; 
+ return 0; }  
+OUTPUT: 
+Name:Alice,Age:20 
+Name:Alice,Age:20 
+Name:Bob,Age:22.
+
+
+# Develop a C++ program to demonstrate the concept of virtual base classes in the context of multiple 
+inheritance,which resolves ambiguity in the inheritance hierarchy.
+PROGRAM:
+#include<iostream> 
+using namespace std; 
+class A{ 
+ public: 
+  A(){cout<<"A Constructor\n";} 
+  ~A(){cout<<"A Destructor\n";} 
+  void show(){ 
+   cout<<"Function of class A\n"; 
+  } 
+}; 
+class B: virtual public A{ 
+ public: 
+  B(){cout<<"B Constructor\n";} 
+  ~B(){cout<<"B Destructor\n";} 
+}; 
+class C: virtual public A{ 
+ public: 
+  C(){cout<<"C Constructor\n";} 
+  ~C(){cout<<"C Destructor\n";} 
+}; 
+class D: public B ,public C{ 
+ public: 
+  D(){cout<<"D Constructor\n";} 
+  ~D(){cout<<"D Destructor\n";} 
+}; 
+int main(){ 
+    D obj; 
+    obj.show(); 
+    return 0;
+}
+OUTPUT:
+A Constructor 
+B Constructor 
+C Constructor 
+D Constructor 
+Function of class A 
+D Destructor 
+C Destructor 
+B Destructor 
+A Destructor.
