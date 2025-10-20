@@ -68,6 +68,4 @@ int main() {
 Output:
 Before swap: x = 3 , y = 18
 After swap: x =18, y = 3
-
-
-# 
+ 
