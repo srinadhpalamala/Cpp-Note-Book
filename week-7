@@ -1,0 +1,195 @@
+# Develop C++ programs to demonstrate different forms of inheritance.
+PROGRAM:
+
+Single Inheritance:
+#include<iostream> 
+using namespace std; 
+class vehicle{ 
+public: 
+vehicle(){ 
+cout<<"This is a vehicle"<<endl;} 
+}; 
+class car:public vehicle 
+{ 
+public: 
+car(){ 
+cout<<"This vehicle is a car"<<endl; 
+} 
+}; 
+int main() 
+{ 
+car obj; 
+return 0; 
+} 
+OUTPUT: 
+This is a vehicle 
+This vehicle is a car.
+
+Multiple Inhertinance:
+#include<iostream> 
+using namespace std; 
+class landvehicle{ 
+ public: 
+ landvehicle(){ 
+cout<<"This is a land vehicle"<<endl; 
+} 
+}; 
+class watervehicle{ 
+ public: 
+ watervehicle(){ 
+ cout<<"This is a water vehicle"<<endl; 
+ } 
+}; 
+class amphibiousvehicle:public watervehicle,public landvehicle{ 
+ public: 
+ amphibiousvehicle(){ 
+cout<<"This is an both land and water vehicle"<<endl; 
+ } 
+}; 
+int main(){ 
+ amphibiousvehicle obj; 
+ return 0; 
+} 
+OUTPUT:
+This is a water vehicle 
+This is a land vehicle 
+This is an both land and water vehicle. 
+
+Multilevel Inheritance:
+#include<iostream> 
+using namespace std; 
+class vehicle{ 
+ public: 
+ vehicle(){ 
+ cout<<"This is a vehicle"<<endl;} 
+}; 
+class fourwheeler:public vehicle{ 
+ public: 
+ fourwheeler(){ 
+cout<<"4 wheeler vehicles"<<endl; 
+ } 
+}; 
+class car:public fourwheeler{ 
+ public: 
+ car(){ 
+cout<<"This 4 wheeler vehicle is a car"; 
+ } 
+}; 
+int main(){ 
+car obj; 
+ return 0; 
+} 
+OUTPUT: 
+This is a vehicle 
+4 wheeler vehicles 
+This 4 wheeler vehicle is a car.
+
+Hierarchical Inheritance:
+#include<iostream> 
+using namespace std; 
+class vehicle{ 
+public: 
+vehicle(){ 
+cout<<"This is a vehicle"<< endl; 
+} 
+}; 
+class car : public vehicle{ 
+public: 
+car(){ 
+cout<<"This vehicle is a car"<< endl; 
+} 
+}; 
+class bus : public vehicle{ 
+public: 
+bus(){ 
+cout<<"This vehicle is bus"<< endl; 
+} 
+}; 
+int main(){ 
+car obj1; 
+bus obj2; 
+} 
+OUTPUT: 
+This is a vehicle 
+This vehicle is a car 
+This is a vehicle 
+This vehicle is bus.
+
+Hybrid Inheritance: 
+#include<iostream> 
+using namespace std; 
+class vehicle{ 
+ public: 
+ vehicle(){ 
+ cout<<"this is a vehicle"<<endl; 
+ } 
+}; 
+class fare{ 
+ public: 
+ fare(){ 
+cout<<"fare of a vehicle"<<endl; 
+ } 
+}; 
+class car:public vehicle{ 
+ public: 
+ car(){ 
+cout<<"this vehicle is a car"<<endl; 
+ } 
+}; 
+class bus:public vehicle,public fare{ 
+ public: 
+ bus(){ 
+cout<<"this vehicle is a bus with fare"<<endl; 
+ } 
+}; 
+int main() 
+{ 
+ bus obj2; 
+} 
+OUTPUT: 
+this is a vehicle 
+fare of a vehicle 
+this vehicle is a bus with fare. 
+
+
+# Develop a C++ program that illustrates the order of execution for constructors 
+and destructors in the context of inheritance. 
+PROGRAM:
+#include<iostream> 
+using namespace std; 
+class parent{ 
+ public: 
+ parent() 
+ { 
+cout<<"parent class construtor\n"; 
+ } 
+ ~parent() 
+ { 
+ cout<<"parent class destructor\n"; 
+ } 
+}; 
+class child :public parent{ 
+ public: 
+ child() 
+ { 
+cout<<"child class constructor\n"; 
+ } 
+ ~child() 
+ { 
+cout<<"child class destructor\n"; 
+ } 
+}; 
+int main() 
+{ 
+ child c; 
+ return 0; 
+} 
+OUTPUT: 
+parent class construtor 
+child class constructor 
+child class destructor 
+parent class destructor.
+
+
+
+
