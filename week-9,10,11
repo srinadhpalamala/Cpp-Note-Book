@@ -1,0 +1,296 @@
+# Develop a C++ program to demonstrate the use of virtual functions to achieve dynamic dispatch and enable
+runtime polymorphism.
+PROGRAM:
+#include<iostream> 
+using namespace std; 
+class shape{ 
+ public: 
+  virtual void draw(){ 
+   cout<<"Draw a generic shape"<<endl;
+}}; 
+  class circle:public shape{ 
+   public: 
+    void draw()override{ 
+    cout<<"Drawing a circle"<<endl; 
+    } 
+  }; 
+  class Rectangle:public shape{ 
+   public: 
+    void draw()override{ 
+    cout<<"Drawing a Rectangle"<<endl; 
+    } 
+  }; 
+  class Triangle:public shape{ 
+   public: 
+    void draw()override{ 
+    cout<<"Drawing a Triangle"<<endl; 
+    } 
+  }; 
+  int main(){ 
+   shape*shapeptr; 
+   circle c; 
+   shapeptr=&c; 
+   shapeptr->draw(); 
+    
+   Rectangle r; 
+   shapeptr=&r; 
+   shapeptr->draw();    
+   Triangle T;
+shapeptr=&T; 
+   shapeptr->draw(); 
+    
+   shape s; 
+   shapeptr=&s; 
+   shapeptr->draw(); 
+   return 0; 
+  } 
+ 
+OUTPUT: 
+Drawing a circle 
+Drawing a Rectangle 
+Drawing a Triangle 
+Draw a generic shape
+
+
+# Develop a C++ program that illustrates runtime polymorphism using virtual functions.
+PROGRAM:
+#include <iostream> 
+using namespace std; 
+class Animal { 
+public: 
+    virtual void speak() { 
+        cout << "Animal makes a sound." << endl;
+    } 
+}; 
+class Dog : public Animal { 
+public: 
+    void speak() override { 
+        cout << "Dog barks." << endl; 
+    } 
+}; 
+class Cat : public Animal { 
+public: 
+    void speak() override { 
+        cout << "Cat meows." << endl; 
+    } 
+}; 
+int main() { 
+    Animal* animalPtr; 
+    Dog d; 
+    Cat c; 
+    animalPtr = &d; 
+    animalPtr->speak();  // Runtime call to Dog::speak() 
+    animalPtr = &c; 
+    animalPtr->speak();  // Runtime call to Cat::speak() 
+    return 0; 
+} 
+OUTPUT: 
+Dog barks. 
+Cat meows.
+
+
+                                        WEEK-10
+# Develop a C++ program that demonstrates the use of function templates to create functions that 
+can work with different data types. 
+PROGRAM:
+#include <iostream> 
+using namespace std; 
+template<typename T>T myMax(T x,T y){ 
+ return (x>y)?x:y; } 
+template <typename T> 
+void myswap(T &x,T &y){ 
+ T temp=x; 
+ x=y; 
+ y=temp; } 
+int main(){ 
+ int a=10,b=20; 
+ cout<<"Max of"<<a<<"and"<<b<<"is:"<<myMax(a,b)<<endl;
+ cout<<"Before swap:a="<<a<<",b="<<b<<endl; 
+ myswap(a,b); 
+ cout<<"After swap:a="<<a<<",b="<<b<<endl;; 
+ cout<<"---------------"<<endl; 
+ double x=5.5,y=2.3; 
+ cout<<"Max of"<<x<<"and"<<y<<"is:"<<myMax(x,y)<<endl; 
+ cout<<"Before swap:x="<<x<<",y="<<y<<endl;; 
+ myswap(x,y); 
+ cout<<"After swap:x="<<x<<",y="<<y<<endl;; 
+ cout<<"---------------"<<endl; 
+ char c1='A',c2='Z'; 
+ cout<<"Max of"<<c1<<"and"<<c2<<"is:"<<myMax(c1,c2)<<endl; 
+ cout<<"Before swap:c1="<<c1<<",c2="<<c2<<endl;; 
+ myswap(c1,c2); 
+ cout<<"After swap:c1="<<c1<<",cc2="<<b<<endl;; 
+ cout<<"---------------"<<endl; 
+ return 0; 
+}
+OUTPUT:
+Max of10and20is:20 
+Before swap:a=10,b=20 
+After swap:a=20,b=10 --------------- 
+Max of5.5and2.3is:5.5 
+Before swap:x=5.5,y=2.3 
+After swap:x=2.3,y=5.5 --------------- 
+Max ofAandZis:Z 
+Before swap:c1=A,c2=Z 
+After swap:c1=Z,cc2=10
+
+
+# Develop a C++ program that demonstrates template classes, which allow creating 
+classes that can work with any data type.
+PROGRAM:
+#include<iostream> 
+using namespace std; 
+  template<class T> 
+  class calculator{ 
+   private: 
+    T num1,num2; 
+   public: 
+   calculator(T n1, T n2){ 
+    num1=n1; 
+    num2=n2; 
+   }  
+    
+   T add(){ return num1+num2;} 
+#include<iostream> 
+using namespace std; 
+  template<class T> 
+  class calculator{ 
+   private: 
+    T num1,num2; 
+   public: 
+   calculator(T n1, T n2){ 
+    num1=n1; 
+    num2=n2; 
+   }  
+    
+   T add(){ return num1+num2;} 
+  T sub(){return num1-num2;} 
+   T multiply(){return num1*num2;} 
+   T divide(){ 
+   if(num2!=0)return num1/num2; 
+   else { 
+    cout<<"error!not divisible by zero:"<<endl; 
+    return 0; 
+       } 
+          } 
+  }; 
+  int main(){ 
+   calculator<int>intcalc(10,5); 
+   cout<<"int calculation:"<<endl; 
+   cout<<"Addition:"<<intcalc.add()<<endl; 
+   cout<<"Subtraction:"<<intcalc.sub()<<endl; 
+   cout<<"Multiply:"<<intcalc.multiply()<<endl; 
+   cout<<"Division:"<<intcalc.divide()<<endl; 
+   cout<<"-------------------------"<<endl; 
+        
+   calculator<double>doublecalc(30.5,19.5); 
+   cout<<"Double calculation:"<<endl; 
+   cout<<"Addition:"<<doublecalc.add()<<endl; 
+   cout<<"Subtraction:"<<doublecalc.sub()<<endl; 
+   cout<<"Multiply:"<<doublecalc.multiply()<<endl; 
+   cout<<"Division:"<<doublecalc.divide()<<endl; 
+   cout<<"-------------------------"<<endl;   
+  } 
+OUTPUT: 
+int calculation: 
+Addition:15 
+Subtraction:5 
+Multiply:50 
+Division:2 ------------------------- 
+Double calculation: 
+Addition:50 
+Subtraction:11 
+Multiply:594.75 
+Division:1.5641
+
+
+                                 WEEK-11
+# Develop a C++ program that demonstrates exception handling using try, throw, and catch blocks.
+PROGRAM:
+#include<iostream> 
+using namespace std; 
+int main(){ 
+ int numerator,denominator; 
+ double result; 
+ cout<<"enter numerator:"; 
+ cin>>numerator; 
+ cout<<"enter denominator:"; 
+ cin>>denominator; 
+  try{ 
+          if(denominator==0) 
+   throw denominator; 
+   result=(double)numerator/denominator; 
+   cout<<"Result="<<result<<endl; 
+  } 
+  catch (int e){ 
+   cout<<"Error:Division by zero is not allowed!"<<endl; 
+  } 
+  cout<<"End Program..."<<endl; 
+  return 0; 
+}
+OUTPUT:
+enter numerator:30 
+enter denominator:19 
+Result=1.57895 
+
+
+# Develop a C++ program to illustrate the use of multiple catch statements, where different types
+of exceptions are caught and handled differently.
+PROGRAM:
+#include <iostream> 
+#include<string> 
+using namespace std; 
+int main(){ 
+ int num1,num2; 
+ char op; 
+ cout<<"Simple calculator"<<endl; 
+ cout<<"Enter first number:"<<endl;
+cin>>num1; 
+ cout<<"Enter second number:"<<endl; 
+ cin>>num2; 
+ cout<<"Enter an operator(+,-,*,/):"; 
+ cin>>op; 
+ try{ 
+  if(op!='+'&& op!='-'&& op!='*'&& op!='/') 
+  throw string("Invalid operator!please use +,-,*or/."); 
+  if(num1<0 ||num2<0) 
+  throw -1.5; 
+  if(op=='/'&&num2==0) 
+  throw 0; 
+   
+  double result; 
+  switch(op){ 
+   case'+':result =num1+num2;break; 
+   case'-':result =num1-num2;break; 
+   case'*':result =num1*num2;break; 
+   case'/':result =(double)num1/num2;break; 
+  } 
+  cout<<"Result: "<<result<<endl; 
+ } 
+ catch (int e){ 
+  cout<<"Error:Division by zero is not allowed!"<<endl; 
+ } 
+ catch (double e){ 
+  cout<<"Error:Negative numbers are not allowed!"<<endl; 
+ } 
+ catch (string e){ 
+  cout<<"Error:"<<e<<endl;
+} 
+ cout<<"Program execution completed successfully."<<endl; 
+ return 0; 
+} 
+OUTPUT: 
+Simple calculator 
+Enter first number: 
+30 
+Enter second number: 
+19 
+Enter an operator(+,-,*,/):+ 
+Result: 49 
+
+ 
+
+
+
+
+
